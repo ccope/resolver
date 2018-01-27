@@ -36,7 +36,7 @@ else
     mode '0644'
     # This syntax makes the resolver sub-keys available directly
     variables node['resolver']
-    force_unlink node['resolver']['deactivate_resolvconf']
+    force_unlink if node['resolver']['deactivate_resolvconf']
   end
   t.atomic_update false if docker_guest?
 end
